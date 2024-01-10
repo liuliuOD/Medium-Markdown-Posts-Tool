@@ -1,3 +1,12 @@
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+HEADERS = {
+    'Authorization': 'Bearer {}'.format(os.getenv('TOKEN')),
+    'User-Agent': os.getenv('USER_AGENT')
+}
+
 CONTENT_TYPE_HTML = 'html'
 CONTENT_TYPE_MARKDOWN = 'markdown'
 

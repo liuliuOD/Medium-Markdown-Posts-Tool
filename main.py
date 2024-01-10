@@ -1,16 +1,8 @@
 import apis
 import config
-import os
-from dotenv import load_dotenv
-load_dotenv()
-
-HEADERS = {
-    'Authorization': 'Bearer {}'.format(os.getenv('TOKEN')),
-    'User-Agent': os.getenv('USER_AGENT')
-}
 
 if __name__ == '__main__':
-    author_id = apis.getUserByToken(HEADERS)['data']['id']
+    author_id = apis.getUserByToken(config.HEADERS)['data']['id']
     with open('README.md', 'r') as file:
         data = {
             'title': 'draft',
@@ -21,5 +13,5 @@ if __name__ == '__main__':
             'license': config.LICENSE_ALL,
             'notifyFollowers': True
         }
-        post = apis.createPost(author_id, data, HEADERS)
+        post = apis.createPost(author_id, data, config.HEADERS)
         print('New Post Link: {}'.format(post['data']['url']))
