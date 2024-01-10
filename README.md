@@ -38,6 +38,23 @@ $ python3 cli.py --title your_custom_title --file your_filepath --fm md_or_html
 $ python3 cli.py --help
 ```
 
+## Demo
+
+- CLI demo
+
+![CLI demo](./README/cli_demo.gif)
+
+- After create
+
+![the stories page of the Medium](./README/stories.png)
+*the stories page of the `Medium`*
+
+![use `--fm md` with file format `markdown`](./README/markdown_to_markdown.png)
+*use `--fm md` with file format `markdown`*
+
+![use `--fm html` though the file format is `markdown`](./README/markdown_to_html.png)
+*use `--fm html` though the file format is `markdown`*
+
 ## Contribution
 
 Contributions are welcome! If you have ideas for improvements or want to fix a bug, feel free to open an issue or submit a pull request.
