@@ -10,6 +10,7 @@ packages = []
 python = "^3.8"
 requests = "^2.31.0"
 python-dotenv = "^1.0.0"
+click = "^8.1.7"
 
 
 [build-system]
