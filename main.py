@@ -22,4 +22,4 @@ if __name__ == '__main__':
             'notifyFollowers': True
         }
         post = apis.createPost(author_id, data, HEADERS)
-        print(f'New Post Link: {post['data']['url']}')
+        print('New Post Link: {}'.format(post['data']['url']))
