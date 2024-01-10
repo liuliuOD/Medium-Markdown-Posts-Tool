@@ -15,19 +15,28 @@ Welcome to the Medium Markdown Posts Tool! This tool is designed to simplify the
 ## Installation
 
 - `Install Dependencies:`
-  ```bash
-  $ poetry install
-  $ poetry shell
-  ```
+
+```bash
+$ poetry install
+$ poetry shell
+```
+
 - `Configure Medium API Key:`
 Obtain your `Medium API key` from the Medium > Settings > Security and apps > Integration tokens.
 
 ## Usage
 
 - Creating a New Post
-  ```bash
-  $ python3 main.py --title your_custom_title --file your filepath --format md_or_html_default_md
-  ```
+
+```bash
+$ python3 cli.py --title your_custom_title --file your_filepath --fm md_or_html
+```
+
+- Get more informations
+
+```bash
+$ python3 cli.py --help
+```
 
 ## Contribution
 
