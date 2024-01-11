@@ -29,13 +29,21 @@ Obtain your `Medium API key` from the Medium > Settings > Security and apps > In
 - Creating a New Post
 
 ```bash
-$ python3 cli.py --title your_custom_title --file your_filepath --fm md_or_html
+# out of the virtual environment
+$ poetry run medium --title your_custom_title --file your_filepath --fm md_or_html
+
+# in the virtual environment
+$ medium --title your_custom_title --file your_filepath --fm md_or_html
 ```
 
 - Get more informations
 
 ```bash
-$ python3 cli.py --help
+# out of the virtual environment
+$ poetry run medium --help
+
+# in the virtual environment
+$ medium --help
 ```
 
 ## Demo
