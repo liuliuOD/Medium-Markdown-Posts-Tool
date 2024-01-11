@@ -2,10 +2,10 @@ import click
 from . import apis, config
 
 @click.command()
-@click.option('--title', default='Draft', help='Title of the post. The default is `Draft`.')
-@click.option('--file', default='README.md', help='The filepath used to create the post. The default is `README.md`.')
-@click.option('--fm', default='md', help='The format of file content. Can choose either `md` or `html`. The default is `md`.')
-def commands(title: str, file: str, fm: str):
+@click.option('-t', '--title', default='Draft', help='Title of the post. The default is `Draft`.')
+@click.option('-f', '--file', default='README.md', help='The filepath used to create the post. The default is `README.md`.')
+@click.option('-H', '--html', is_flag=True, help='The format of file content. The default is `markdown` if this flag is not set.')
+def commands(title: str, file: str, html: bool):
     """
     Create Medium posts effortlessly using the CLI.
     """
@@ -13,7 +13,7 @@ def commands(title: str, file: str, fm: str):
     with open(file, 'r') as file:
         data = {
             'title': title,
-            'contentFormat': config.CONTENT_TYPE_MARKDOWN if fm == 'md' else config.CONTENT_TYPE_HTML,
+            'contentFormat': config.CONTENT_TYPE_HTML if html else config.CONTENT_TYPE_MARKDOWN,
             'content': file.read(),
             'tags': [],
             'publishStatus': config.PUBLISH_STATUS_DRAFT,
