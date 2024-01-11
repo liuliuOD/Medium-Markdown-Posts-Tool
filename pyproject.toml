@@ -13,7 +13,7 @@ python-dotenv = "^1.0.0"
 click = "^8.1.7"
 
 [tool.poetry.scripts]
-medium = "src.medium.__main__:commands"
+medium = "src.medium.__main__:cli"
 
 
 [build-system]
