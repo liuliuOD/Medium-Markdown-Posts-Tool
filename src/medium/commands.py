@@ -3,10 +3,10 @@ from . import apis, config
 from typing import Tuple
 
 @click.command()
-@click.option('--title', default='Draft', help='Title of the post. The default is `Draft`.')
-@click.option('-f', '--file', default='README.md', help='The filepath used to create the post. The default is `README.md`.')
-@click.option('-H', '--html', is_flag=True, help='The format of file content. The default is `markdown` if this flag is not set.')
-@click.option('-P', '--public', is_flag=True, help='The status of the created post. The default is `draft` if this flag is not set.')
+@click.option('--title', default='Draft', show_default='Draft', help='Title of the post.')
+@click.option('-f', '--file', default='README.md', show_default='README.md', help='The filepath used to create the post.')
+@click.option('-H', '--html', is_flag=True, show_default='markdown', help='The format of file content.')
+@click.option('-P', '--public', is_flag=True, show_default='draft', help='The status of the created post.')
 @click.option('-N', '--notify', is_flag=True, help='Notify your follower.')
 @click.option('-O', '--open-in-browser', is_flag=True, help='Open the created post in your default browser.')
 @click.option('-t', '--tags', multiple=True, default=[], help='The tags you want to set to the post.')
