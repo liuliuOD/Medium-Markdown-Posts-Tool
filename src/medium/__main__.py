@@ -28,10 +28,10 @@ def commands(title: str, file: str, html: bool, public: bool, notify: bool, open
         post = apis.createPost(author_id, data, config.HEADERS)
         url_post = post['data']['url']
 
-        click.echo('New Post Link: {}'.format(url_post))
-        if open_in_browser:
-            import webbrowser
-            webbrowser.open(url_post)
+    click.echo('New Post Link: {}'.format(url_post))
+    if open_in_browser and url_post:
+        import webbrowser
+        webbrowser.open(url_post)
 
 if __name__ == '__main__':
     commands()
