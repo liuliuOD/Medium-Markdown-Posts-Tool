@@ -1,5 +1,4 @@
-import apis
-import config
+from src.medium import apis, config
 
 if __name__ == '__main__':
     author_id = apis.getUserByToken(config.HEADERS)['data']['id']

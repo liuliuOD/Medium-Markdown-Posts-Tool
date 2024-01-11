@@ -1,6 +1,5 @@
 import click
-import apis
-import config
+from . import apis, config
 
 @click.command()
 @click.option('--title', default='Draft', help='Title of the post. The default is `Draft`.')
