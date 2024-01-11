@@ -1,6 +1,5 @@
 import click
 from . import apis, config
-from typing import Tuple
 
 @click.command()
 @click.option('--title', default='Draft', show_default='Draft', help='Title of the post.')
@@ -10,7 +9,7 @@ from typing import Tuple
 @click.option('-N', '--notify', is_flag=True, help='Notify your follower.')
 @click.option('-O', '--open-in-browser', is_flag=True, help='Open the created post in your default browser.')
 @click.option('-t', '--tags', multiple=True, default=[], help='The tags you want to set to the post.')
-def createPost(title: str, file: str, html: bool, public: bool, notify: bool, open_in_browser: bool, tags: Tuple):
+def createPost(title: click.STRING, file: click.STRING, html: click.BOOL, public: click.BOOL, notify: click.BOOL, open_in_browser: click.BOOL, tags: click.Tuple):
     """
     Create Medium posts effortlessly using the CLI.
     """
