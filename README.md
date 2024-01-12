@@ -15,10 +15,8 @@ Welcome to the Medium Markdown Posts Tool! This tool is designed to simplify the
 ## Installation
 
 - `Install Dependencies:`
-
-```bash
+```console
 $ poetry install
-$ poetry shell
 ```
 
 - `Configure Medium API Key:`
@@ -26,19 +24,33 @@ Obtain your `Medium API key` from the Medium > Settings > Security and apps > In
 
 ## Usage
 
+- Export Medium token
+```console
+$ export TOKEN="replace to your Medium token"
+```
+
 - Creating a New Post
 
-```bash
+> CLI mode
+```console
 # out of the virtual environment
-$ poetry run medium --title your_custom_title --file your_filepath --fm md_or_html
+$ poetry run medium post:create --title your_custom_title --file your_filepath -H -P -N -O -t post_tag_1 -t post_tag_2
 
 # in the virtual environment
-$ medium --title your_custom_title --file your_filepath --fm md_or_html
+$ medium post:create --title your_custom_title --file your_filepath -H -P -N -O -t post_tag_1 -t post_tag_2
+```
+
+> Interaction mode
+```console
+# out of the virtual environment
+$ poetry run medium post:interact
+
+# in the virtual environment
+$ medium post:interact
 ```
 
 - Get more informations
-
-```bash
+```console
 # out of the virtual environment
 $ poetry run medium --help
 
@@ -57,11 +69,11 @@ $ medium --help
 ![the stories page of the Medium](./README/stories.png)
 *the stories page of the `Medium`*
 
-![use `--fm md` with file format `markdown`](./README/markdown_to_markdown.png)
-*use `--fm md` with file format `markdown`*
+![use `default content format` with file format `markdown`](./README/markdown_to_markdown.png)
+*use `default content format` with file format `markdown`*
 
-![use `--fm html` though the file format is `markdown`](./README/markdown_to_html.png)
-*use `--fm html` though the file format is `markdown`*
+![use option `-H` though the file format is `markdown`](./README/markdown_to_html.png)
+*use option `-H` though the file format is `markdown`*
 
 ## Contribution
 
@@ -74,3 +86,4 @@ This project is released under the AGPL v3 license. See the [LICENSE](./LICENSE)
 ## References
 
 - [Medium API Documentation](https://github.com/Medium/medium-api-docs)
+- [How to generate a mock User-Agent](https://stackoverflow.com/questions/48454949/how-do-i-create-a-random-user-agent-in-python-selenium)
