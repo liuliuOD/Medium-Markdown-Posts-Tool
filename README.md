@@ -12,15 +12,22 @@ Welcome to the Medium Markdown Posts Tool! This tool is designed to simplify the
 - Markdown Support: Write your posts using markdown, making it easy to structure and format your content.
 - Effortless Publishing: Seamlessly publish your articles directly from the command line.
 
-## Installation
-
-- `Install Dependencies:`
-```console
-$ poetry install
-```
+## Requirements
 
 - `Configure Medium API Key:`
-Obtain your `Medium API key` from the Medium > Settings > Security and apps > Integration tokens.
+Obtain your `Medium API key` from the Medium > Settings > [Security and apps](https://medium.com/me/settings/security) > Integration tokens.
+
+## Installation
+
+> Poetry
+```console
+$ poetry add git+https://github.com/liuliuOD/Medium-Markdown-Posts-Tool.git
+```
+
+> pip
+```console
+$ pip install git+https://github.com/liuliuOD/Medium-Markdown-Posts-Tool.git
+```
 
 ## Usage
 
