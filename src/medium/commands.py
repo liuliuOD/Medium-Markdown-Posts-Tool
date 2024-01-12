@@ -1,4 +1,5 @@
 import click
+from . import formatter
 from . import apis, config
 
 @click.command()
@@ -15,15 +16,7 @@ def createPost(title: click.STRING, file: click.STRING, html: click.BOOL, public
     """
     author_id = apis.getUserByToken(config.HEADERS)['data']['id']
     with open(file, 'r') as file:
-        data = {
-            'title': title,
-            'contentFormat': config.CONTENT_TYPE_HTML if html else config.CONTENT_TYPE_MARKDOWN,
-            'content': file.read(),
-            'tags': tags,
-            'publishStatus': config.PUBLISH_STATUS_PUBLIC if public else config.PUBLISH_STATUS_DRAFT,
-            'license': config.LICENSE_ALL,
-            'notifyFollowers': notify
-        }
+        data = formatter.assembleDataForMediumPost(title, html, file, tags, public, notify)
         post = apis.createPost(author_id, data, config.HEADERS)
         url_post = post['data']['url']
 
