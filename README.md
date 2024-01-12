@@ -74,3 +74,4 @@ This project is released under the AGPL v3 license. See the [LICENSE](./LICENSE)
 ## References
 
 - [Medium API Documentation](https://github.com/Medium/medium-api-docs)
+- [How to generate a mock User-Agent](https://stackoverflow.com/questions/48454949/how-do-i-create-a-random-user-agent-in-python-selenium)

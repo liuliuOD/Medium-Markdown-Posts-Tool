@@ -11,6 +11,7 @@ python = "^3.8"
 requests = "^2.31.0"
 python-dotenv = "^1.0.0"
 click = "^8.1.7"
+fake-useragent = "^1.4.0"
 
 [tool.poetry.scripts]
 medium = "src.medium.__main__:cli"
