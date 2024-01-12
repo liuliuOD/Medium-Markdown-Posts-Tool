@@ -16,7 +16,7 @@ def createPost(title: click.STRING, file: click.STRING, html: click.BOOL, public
     """
     author_id = apis.getUserByToken(config.HEADERS)['data']['id']
     with open(file, 'r') as file:
-        data = formatter.assembleDataForMediumPost(title, html, file, tags, public, notify)
+        data = formatter.assembleCommandsData(title, html, file, tags, public, notify)
         post = apis.createPost(author_id, data, config.HEADERS)
         url_post = post['data']['url']
 
