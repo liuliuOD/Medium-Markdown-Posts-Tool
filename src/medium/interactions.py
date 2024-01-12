@@ -3,6 +3,10 @@ from . import apis, config, formatter
 
 @click.command()
 def createPost():
+    """
+    Create Medium posts effortlessly using interaction mode.
+    """
+
     title = click.prompt('The `title` of your post', type=click.STRING, default='Draft')
 
     filepath = click.prompt('The `filepath` you want to used to create the post', type=click.STRING)
@@ -11,11 +15,11 @@ def createPost():
 
     publish_status = click.prompt('The status of the create post', type=click.Choice([config.PUBLISH_STATUS_UNLISTED, config.PUBLISH_STATUS_DRAFT, config.PUBLISH_STATUS_PUBLIC]), default=config.PUBLISH_STATUS_DRAFT)
 
-    can_notify = click.prompt('Do you want to notify your follower when this post be published', type=click.BOOL, default=False)
+    can_notify = click.prompt('Notify your followers when this post is published', type=click.BOOL, default=False)
 
-    should_open_in_browser = click.prompt('Do you want to open the link of the created post in your default browser', type=click.BOOL, default=True)
+    should_open_in_browser = click.prompt('Open the link of the created post in your default browser', type=click.BOOL, default=True)
 
-    tags = click.prompt('The tags you want to set to the post (split by comma (,) symbols)', type=click.STRING, default='')
+    tags = click.prompt('The tags you want to set for the post, separated by commas(,)', type=click.STRING, default='')
     tags = [tag.strip() for tag in tags.split(',')] if tags else []
 
     with open(filepath, 'r') as file:
