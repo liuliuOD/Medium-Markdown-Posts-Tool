@@ -1,5 +1,5 @@
 import click
-from . import apis, config, formatter, services
+from . import config, formatter, services
 
 @click.command()
 def createPost():
@@ -29,8 +29,7 @@ def createPost():
                 file_content = services.uploadImagesInMarkdown(file_content)
 
             data = formatter.assembleDataForMediumPost(title, content_format, file_content, tags, publish_status, can_notify)
-            author_id = apis.getUserByToken(config.HEADERS)['data']['id']
-            post = apis.createPost(author_id, data, config.HEADERS)
+            post = services.createPost(data)
             url_post = formatter.getUrlFromResponse(post)
 
     click.echo('New Post Link: {}'.format(url_post))

@@ -16,3 +16,7 @@ def uploadImagesInMarkdown(data: str) -> str:
         data = data.replace(f']({origin})', f']({target})')
 
     return data
+
+def createPost(data: Dict) -> Dict:
+    author_id = apis.getUserByToken(config.HEADERS)['data']['id']
+    return apis.createPost(author_id, data, config.HEADERS)
