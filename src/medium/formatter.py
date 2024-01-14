@@ -4,6 +4,8 @@ from . import config
 from io import TextIOBase
 from click import STRING, BOOL, Tuple
 
+IMAGE_LINK_SPLITTER: str = ']('
+
 def assembleCommandsData(title: STRING, html: BOOL, file_content: str, tags: Tuple, public: BOOL, notify: BOOL) -> typing.Dict:
     content_format = config.CONTENT_TYPE_HTML if html else config.CONTENT_TYPE_MARKDOWN
     publish_status = config.PUBLISH_STATUS_PUBLIC if public else config.PUBLISH_STATUS_DRAFT
@@ -42,6 +44,9 @@ def assembleFilesForMediumImage(file: TextIOBase, filepath: str) -> typing.List:
             )
         )
     ]
+
+def assembleMarkdownImageLinkReplacer(target: str) -> str:
+    return f'{IMAGE_LINK_SPLITTER}{target})'
 
 def getUrlFromResponse(response: typing.Dict) -> str:
     return response['data']['url']
