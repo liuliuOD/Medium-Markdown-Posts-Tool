@@ -1,5 +1,5 @@
 import click
-from . import apis, config, formatter
+from . import apis, config, formatter, services
 
 @click.command()
 def createPost():
@@ -24,10 +24,14 @@ def createPost():
 
     with open(filepath, 'r') as file:
         if click.confirm('Please check again; the above information is correct', abort=True):
-            data = formatter.assembleDataForMediumPost(title, content_format, file, tags, publish_status, can_notify)
+            file_content = file.read()
+            if content_format == config.CONTENT_TYPE_MARKDOWN:
+                file_content = services.uploadImagesInMarkdown(file_content)
+
+            data = formatter.assembleDataForMediumPost(title, content_format, file_content, tags, publish_status, can_notify)
             author_id = apis.getUserByToken(config.HEADERS)['data']['id']
             post = apis.createPost(author_id, data, config.HEADERS)
-            url_post = post['data']['url']
+            url_post = formatter.getUrlFromResponse(post)
 
     click.echo('New Post Link: {}'.format(url_post))
     if should_open_in_browser and url_post:

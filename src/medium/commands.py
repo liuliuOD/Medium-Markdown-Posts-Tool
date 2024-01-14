@@ -1,6 +1,5 @@
 import click
-from . import formatter
-from . import apis, config
+from . import apis, config, formatter, services
 
 @click.command()
 @click.option('--title', default='Draft', show_default='Draft', help='Title of the post.')
@@ -16,9 +15,13 @@ def createPost(title: click.STRING, file: click.STRING, html: click.BOOL, public
     """
     author_id = apis.getUserByToken(config.HEADERS)['data']['id']
     with open(file, 'r') as file:
-        data = formatter.assembleCommandsData(title, html, file, tags, public, notify)
+        file_content = file.read()
+        if not html:
+            file_content = services.uploadImagesInMarkdown(file_content)
+
+        data = formatter.assembleCommandsData(title, html, file_content, tags, public, notify)
         post = apis.createPost(author_id, data, config.HEADERS)
-        url_post = post['data']['url']
+        url_post = formatter.getUrlFromResponse(post)
 
     click.echo('New Post Link: {}'.format(url_post))
     if open_in_browser and url_post:
