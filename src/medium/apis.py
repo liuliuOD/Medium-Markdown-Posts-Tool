@@ -14,3 +14,10 @@ def createPost(author_id: str, data: List, headers: Dict, timeout: int = 10) -> 
     response.raise_for_status()
 
     return response.json()
+
+def uploadImage(headers: Dict, files: Dict, timeout: int = 10) -> Dict:
+    response = requests.post('https://api.medium.com/v1/images', files=files, headers=headers, timeout=timeout)
+
+    response.raise_for_status()
+
+    return response.json()
